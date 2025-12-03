@@ -1,0 +1,201 @@
+/* src/CaseStudies.css */
+
+/* SECTION – (grid styles from earlier are now unused for cards, but harmless)
+-------------------------------------------------------------- */
+
+.cs-section {
+  padding: 2rem 0 3rem;
+}
+
+.cs-section-header {
+  margin-bottom: 2rem;
+}
+
+.cs-eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: 0.75rem;
+  opacity: 0.7;
+  margin-bottom: 0.25rem;
+}
+
+.cs-section-title {
+  font-size: 2.25rem;
+  font-weight: 700;
+}
+
+/* MODAL OVERLAY / SHELL
+-------------------------------------------------------------- */
+
+.cs-modal-overlay {
+  position: fixed;
+  top: 88px; /* Height of the header */
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(4, 4, 4, 0.85);
+  display: flex;
+  justify-content: center;
+  align-items: flex-start; /* Align to top instead of center */
+  padding: 1.5rem 1rem;
+  z-index: 999;
+  overflow-y: auto;
+}
+
+.cs-modal {
+  position: relative;
+  background: #050505;
+  border-radius: 20px;
+  max-width: 1280px;
+  width: min(1280px, 96vw);
+  max-height: calc(100vh - 88px - 3rem); /* Account for header and padding */
+  padding: 1.75rem 1.75rem 2rem;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  color: #f5f5f5;
+  overflow-y: auto;
+  margin-top: 0.5rem;
+}
+
+/* Responsive - header is shorter on mobile */
+@media (max-width: 640px) {
+  .cs-modal-overlay {
+    top: 72px; /* Adjust for shorter mobile header */
+    padding: 1rem 0.5rem;
+  }
+
+  .cs-modal {
+    max-height: calc(100vh - 72px - 2rem);
+    padding: 1.4rem 1.25rem 1.75rem;
+    border-radius: 16px;
+    width: 96vw;
+  }
+
+  .cs-modal-title {
+    font-size: 1.5rem;
+  }
+
+  .cs-modal-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 700px) {
+  .cs-modal {
+    padding: 1.4rem 1.25rem 1.75rem;
+    border-radius: 16px;
+    width: 96vw;
+  }
+
+  .cs-modal-title {
+    font-size: 1.5rem;
+  }
+
+  .cs-modal-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* MODAL HEADER
+-------------------------------------------------------------- */
+
+.cs-modal-header {
+  padding-right: 2rem;
+  margin-bottom: 1.5rem;
+}
+
+.cs-modal-heading {
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  font-size: 0.72rem;
+  opacity: 0.75;
+  margin-bottom: 0.25rem;
+}
+
+.cs-modal-title {
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin-bottom: 0.35rem;
+}
+
+.cs-modal-label {
+  font-size: 0.9rem;
+  opacity: 0.85;
+}
+
+/* MODAL BODY
+-------------------------------------------------------------- */
+
+.cs-modal-body {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  margin-top: 0.75rem;
+}
+
+.cs-modal-subtitle {
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.cs-modal-text {
+  font-size: 0.94rem;
+  line-height: 1.6;
+  opacity: 0.9;
+}
+
+.cs-modal-image {
+  width: 100%;
+  display: block;
+  border-radius: 14px;
+  margin-top: 0.75rem;
+}
+
+/* Simple 2-col grid inside modal */
+
+.cs-modal-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.5rem;
+}
+
+/* CS2 – tall image rows (alternating)
+-------------------------------------------------------------- */
+
+.cs2-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
+  gap: 1.5rem;
+  align-items: flex-start;
+  margin-top: 1.5rem;
+}
+
+.cs2-imgTall {
+  max-height: 520px;
+  width: 100%;
+  object-fit: cover;
+  border-radius: 14px;
+}
+
+/* Responsive tweaks */
+
+@media (max-width: 900px) {
+  .cs2-row {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 700px) {
+  .cs-modal {
+    padding: 1.4rem 1.25rem 1.75rem;
+    border-radius: 16px;
+    width: 96vw;
+  }
+
+  .cs-modal-title {
+    font-size: 1.5rem;
+  }
+
+  .cs-modal-grid {
+    grid-template-columns: 1fr;
+  }
+}

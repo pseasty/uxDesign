@@ -1,0 +1,16 @@
+/* src/index.css */
+
+/* 1. Define custom fonts at the very top */
+@font-face {
+  font-family: 'Neutra';
+  src: url('./assets/fonts/Neutra-Bold.otf') format('opentype'); 
+  font-weight: 700;
+  font-style: normal;
+}
+
+/* 2. Include the Tailwind v3 directives */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* DO NOT include @import "tailwindcss"; */
