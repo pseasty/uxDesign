@@ -201,7 +201,7 @@ const Header = ({ hidden = false }) => (
     <div className="max-w-container w-full mx-auto px-4 lg:px-[110px] flex justify-between items-center max-mobile:flex-col max-mobile:justify-center max-mobile:gap-4">
       <p className="font-body text-base lg:text-lg text-white text-center">
         Patrick East <span className="text-primary-button">|</span>{" "}
-        <span className="text-accent">Creative Lead & Product Designer</span>
+        <span className="text-accent">UX & Product Designer</span>
       </p>
 
       <a href="#contact-section" className="hidden tablet:inline-block">
@@ -278,7 +278,7 @@ const ContactSection = () => {
                 </div>
                 <div>
                   <p className="font-bold">Email</p>
-                  <p className="text-text-secondary">info@prizmpix.com</p>
+                  <p className="text-text-secondary">plurals_kiwi7i@icloud.com</p>
                 </div>
               </div>
 
@@ -298,7 +298,7 @@ const ContactSection = () => {
                 </div>
                 <div>
                   <p className="font-bold">Location</p>
-                  <p className="text-text-secondary">Toronto, ON. Canada</p>
+                  <p className="text-text-secondary">Calgary, ALB. Canada</p>
                 </div>
               </div>
             </div>
@@ -396,7 +396,7 @@ const Footer = ({ setCurrentPage, onNav }) => {
         <div>
           <h4 className="font-heading font-bold text-2xl mb-4">Patrick East</h4>
           <p className="text-gray-400 max-w-md mx-auto tablet:mx-0">
-            A passionate and results-driven creative lead with a deep
+            A passionate and results-driven product designer with a deep
             understanding of form, composition, and user-centric design.
           </p>
         </div>
@@ -521,33 +521,34 @@ const BottomToggle = ({ currentPage, setCurrentPage, introPhase = "settled" }) =
 const WorkPage = ({ onProjectSelect, introPhase }) => {
   return (
     <div className="max-w-container mx-auto px-4 lg:px-[110px] py-12 text-text-dark">
-      {/* Row 1 – DESIGN · Case Study 1 */}
+      {/* Row 1 – DEFINE · Case Study 1 */}
       <WorkSection
         index={0}
-        title="DESIGN"
+        title="DEFINE"
         introPhase={introPhase}
         project={CASE_STUDIES[0]}
         onProjectSelect={onProjectSelect}
       />
 
-      {/* Row 2 – BRAND · Case Study 2 */}
+      {/* Row 1 – DESIGN · Case Study 1 */}
       <WorkSection
         index={1}
-        title="BRAND"
+        title="DESIGN"
         textAlign="right"
         introPhase={introPhase}
         project={CASE_STUDIES[1]}
         onProjectSelect={onProjectSelect}
       />
 
-      {/* Row 3 – IMPACT · Case Study 3 */}
+      {/* Row 1 – DELIVER · Case Study 3 */}
       <WorkSection
         index={2}
-        title="IMPACT"
+        title="DELIVER"
         introPhase={introPhase}
         project={CASE_STUDIES[2]}
         onProjectSelect={onProjectSelect}
       />
+
 
       {/* Bio block below case studies */}
       <div className="mt-16">
@@ -667,7 +668,7 @@ const WorkSection = ({
 
 const ProjectCard = ({ project, onSelect, revealType, introReady }) => {
   const desktopThumb = project.thumbnailDesktop || project.thumbnail;
-  const mobileThumb = project.thumbnailMobile || desktopThumb;
+  const mobileThumb = project.mobileThumbnail || desktopThumb;
 
   const isIntroCard = revealType === "intro";
   
@@ -824,15 +825,14 @@ const AboutPage = ({ setCurrentPage }) => {
                 <span className="text-h1 max-sm:text-h2">Patrick East</span>
               </span>
               <span className="block text-h2 max-sm:text-h3">
-                Creative Lead & Product Designer
+                UX & Product Designer
               </span>
             </h1>
 
             <p className="text-gray-400 mt-6 text-xl text-left">
-              Hands-on creative lead who bridges brand, product, and marketing.
-              I plan, design, and ship experiences—from campaigns and
-              storytelling to pixel-perfect web apps—working closely with
-              engineers and stakeholders to deliver measurable results.
+              UX and product designer with a focus on clarity, usability, and impact.
+              I design experiences grounded in research, refined through iteration, 
+              and built in close collaboration with engineering to ship solutions that work for real users.
             </p>
           </div>
 
@@ -905,20 +905,14 @@ const AboutPage = ({ setCurrentPage }) => {
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 0.7, ease: "easeOut" }}
           >
-            <SkillBar skill="UI/UX Design" percentage={90} />
-            <SkillBar skill="Graphic Design" percentage={95} />
-            <SkillBar skill="Figma" percentage={85} />
-            <SkillBar skill="Adobe Creative Suite" percentage={90} />
-            <SkillBar skill="Marketing" percentage={75} />
-            <SkillBar skill="Video" percentage={75} />
-            <SkillBar
-              skill="Project Management / Coordination"
-              percentage={85}
-            />
-            <SkillBar
-              skill="Brand Strategy / Brand Development"
-              percentage={80}
-            />
+            <SkillBar skill="User Experience Design (UX)" percentage={90} />
+            <SkillBar skill="User Interface Design (UI)" percentage={90} />
+            <SkillBar skill="Product Design / Strategy" percentage={85} />
+            <SkillBar skill="Design Systems & Component Libraries" percentage={85} />
+            <SkillBar skill="User Flows & Journey Mapping" percentage={85} />
+            <SkillBar skill="Wireframing & Prototyping" percentage={90} />
+            <SkillBar skill="Usability Testing & Iteration" percentage={80} />
+            <SkillBar skill="Information Architecture" percentage={80} />
           </motion.div>
         </div>
       </section>
@@ -992,161 +986,7 @@ const AboutPage = ({ setCurrentPage }) => {
         </div>
       </motion.section>
 
-      {/* OTHER SELECTED WORK */}
-      <motion.section className="py-16" {...sectionAnimation}>
-        <div className="max-w-container mx-auto px-4 lg:px-[110px]">
-          <h2 className="text-h2 font-heading text-center font-bold">
-            Other Selected Work
-          </h2>
-          <div className="w-20 h-1 bg-accent mx-auto mt-4 mb-8" />
 
-          <div className="max-w-[576px] mx-auto">
-            <p className="text-gray-400 mb-10 text-xl text-left">
-              Beyond UX and web, I’ve led campaign creative, motion, and
-              physical collateral—supporting launches, events, and ongoing
-              marketing efforts.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-3 gap-6 max-tablet:grid-cols-2 max-mobile:grid-cols-1">
-            {OTHER_WORK_GALLERY.map((item) => {
-              const isVideo = !!item.videoId;
-              const isExpandableImage = !isVideo && item.expandable;
-
-              const thumbSrc = isVideo
-                ? `https://img.youtube.com/vi/${item.videoId}/hqdefault.jpg`
-                : item.thumbnail;
-
-              const cardInner = (
-                <motion.div
-                  className="bg-med-background rounded-card overflow-hidden text-text-dark cursor-pointer group"
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, amount: 0.4 }}
-                  transition={{ duration: 0.5, ease: "easeOut" }}
-                >
-                  <div className="relative w-full h-[220px] overflow-hidden">
-                    <img
-                      src={thumbSrc}
-                      alt={item.title}
-                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.04]"
-                    />
-                    {isVideo && (
-                      <div className="absolute inset-0 flex items-center justify-center bg-black/30">
-                        <div className="w-14 h-14 rounded-full bg-white/90 flex items-center justify-center">
-                          <div className="ml-1 border-l-[14px] border-l-primary-button border-y-[9px] border-y-transparent" />
-                        </div>
-                      </div>
-                    )}
-                  </div>
-                  <div className="p-4">
-                    <p className="font-heading font-bold text-base leading-snug">
-                      {item.title}
-                    </p>
-                    <p className="text-sm text-text-secondary mt-1">
-                      {item.role}
-                    </p>
-                  </div>
-                </motion.div>
-              );
-
-              if (isVideo) {
-                return (
-                  <button
-                    key={item.id}
-                    type="button"
-                    onClick={() => setActiveVideoId(item.videoId)}
-                    className="text-left"
-                  >
-                    {cardInner}
-                  </button>
-                );
-              }
-
-              if (isExpandableImage) {
-                return (
-                  <button
-                    key={item.id}
-                    type="button"
-                    onClick={() =>
-                      setExpandedWorkImage(item.fullImage || item.thumbnail)
-                    }
-                    className="text-left"
-                  >
-                    {cardInner}
-                  </button>
-                );
-              }
-
-              return <div key={item.id}>{cardInner}</div>;
-            })}
-          </div>
-        </div>
-      </motion.section>
-
-      {/* CLOSING BLOCK */}
-      <motion.div
-        className="bg-dark-background py-16"
-        initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, amount: 0.3 }}
-        transition={{ duration: 0.6, ease: "easeOut" }}
-      >
-        <div className="max-w-[576px] mx-auto text-center px-4 tablet:px-0">
-          <h3 className="text-h2 font-bold font-heading text-white">
-            Patrick East
-          </h3>
-          <p className="mt-4 text-gray-400 text-xl text-left">
-            My passion for design and typography started when I was 15, doing
-            large-scale mural and typographic art. It gave me a deep, hands-on
-            understanding of form, composition, and letter structure that I
-            didn’t have a name for back then. It’s where I first learned to
-            master the craft and earn respect. I’ve spent my entire professional
-            career, from graphic design to UX, refining that same passion.
-          </p>
-        </div>
-      </motion.div>
-
-      {/* VIDEO OVERLAY FOR OW2 */}
-      {activeVideoId && (
-        <div
-          className="fixed inset-0 z-50 bg-black/70 flex items-center justify-center px-4"
-          onClick={() => setActiveVideoId(null)}
-        >
-          <div
-            className="w-full max-w-3xl aspect-video bg-black rounded-card overflow-hidden"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <iframe
-              title="Motion graphics video"
-              src={`https://www.youtube.com/embed/${activeVideoId}?autoplay=1`}
-              className="w-full h-full"
-              frameBorder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              allowFullScreen
-            />
-          </div>
-        </div>
-      )}
-
-      {/* IMAGE OVERLAY FOR OW1 / OW3 */}
-      {expandedWorkImage && (
-        <div
-          className="fixed inset-0 z-50 bg-black/70 flex items-center justify-center px-4"
-          onClick={() => setExpandedWorkImage(null)}
-        >
-          <div
-            className="w-full max-w-5xl bg-black rounded-card overflow-hidden"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <img
-              src={expandedWorkImage}
-              alt="Expanded work visual"
-              className="w-full h-auto"
-            />
-          </div>
-        </div>
-      )}
     </div>
   );
 };

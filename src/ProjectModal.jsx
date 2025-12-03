@@ -153,14 +153,14 @@ const ProjectModal = ({ id, onClose }) => {
 
                       <div className="flex flex-col justify-center h-full bg-med-background p-8 rounded-card text-text-dark max-lg:mt-6">
                         <h3 className="text-h3 font-heading font-bold text-text-dark">
-                          Brand Development & Style Guides
+                          Design System Foundations
                         </h3>
                         <p className="font-body text-xl text-text-secondary mt-4">
-                          I started by defining the visual language—type
-                          hierarchy, spacing, and colour rules designed to feel
-                          bold but minimal. These guides keep the experience
-                          consistent as new pages and case studies are added
-                          over time.
+                          I started by defining the core system: typography scales, colour roles,
+                          spacing tokens, and interaction states. The goal was to create a visual
+                          language that feels bold but minimal while staying flexible enough to
+                          support new pages, case studies, and future experiments without
+                          redesigning everything from scratch.
                         </p>
                       </div>
                     </div>
@@ -176,11 +176,12 @@ const ProjectModal = ({ id, onClose }) => {
                           Component Library & Layout System
                         </h3>
                         <p className="font-body text-xl text-text-secondary mt-4">
-                          The UI is built from a small, reusable component
-                          system: hero layouts, project cards, testimonials, and
-                          call-to-actions. That makes it easy to scale the site
-                          without redesigning every screen and keeps the codebase
-                          clean and predictable.
+                          The site is built from a reusable component set—hero modules, project
+                          cards, content rows, and CTAs—mapped to real content patterns in the
+                          portfolio. This keeps the experience consistent across pages, makes it
+                          easy to add new work, and mirrors how I think about design systems in
+                          product teams: shared components, predictable behavior, and clear
+                          constraints.
                         </p>
                       </div>
 
@@ -209,15 +210,15 @@ const ProjectModal = ({ id, onClose }) => {
 
                       <div className="flex flex-col justify-center h-full bg-med-background p-8 rounded-card text-text-dark max-lg:mt-6">
                         <h3 className="text-h3 font-heading font-bold text-text-dark">
-                          Designed in Figma, Built in Code
+                          From Figma Concepts to Production UI
                         </h3>
                         <p className="font-body text-xl text-text-secondary mt-4">
-                          The portfolio was designed in Figma and then
-                          hand-built in React, with Framer Motion driving the
-                          hero animations and project transitions. I treated the
-                          codebase like a design system—clean file structure,
-                          reusable helpers, and animation primitives—so it’s easy
-                          to extend for new work and experiments.
+                          I designed the experience in Figma, then implemented it in React with
+                          Framer Motion handling key transitions and scroll reveals. Building
+                          the portfolio as a real product forced me to make practical decisions
+                          about performance, responsiveness, and animation detail—the same
+                          trade-offs I navigate when working with engineering teams on live
+                          features.
                         </p>
                       </div>
                     </div>
@@ -255,28 +256,28 @@ const ProjectModal = ({ id, onClose }) => {
                 <RowReveal delay={0.2}>
                   <div className="bg-med-background p-8 rounded-card text-text-dark">
                     <h3 className="text-h3 font-heading font-bold text-text-dark">
-                      Why This Matters in a Creative Lead Role
+                      How This Reflects My UX & Product Practice
                     </h3>
                     <p className="font-body text-xl text-text-secondary mt-4">
-                      This portfolio project isn’t just a personal site—it’s a
-                      sandbox for how I think about leading digital work end to
-                      end.
+                      This portfolio behaves like a small product: it has users, flows,
+                      constraints, and a roadmap. I use it as a sandbox to practice the
+                      same UX and product thinking I bring to client work.
                     </p>
                     <ul className="font-body text-xl text-text-secondary mt-4 space-y-2 list-disc list-inside">
                       <li>
-                        I defined the visual direction, interaction patterns,
-                        and narrative so the experience feels cohesive from hero
-                        to footer.
+                        I shaped the narrative and information architecture so hiring
+                        managers can quickly understand who I am, what I do, and where to
+                        go next.
                       </li>
                       <li>
-                        I treated the front-end like a design system—
-                        components, tokens, and motion primitives that can be
-                        reused and extended by a team.
+                        I treated the interface as a design system, with reusable patterns
+                        and motion primitives that make the experience scalable and easy to
+                        evolve.
                       </li>
                       <li>
-                        I did the hands-on implementation in React and Framer
-                        Motion, which helps me give grounded feedback to
-                        engineers and move faster together.
+                        I built the UI myself, which helps me communicate clearly with
+                        engineers, prototype ideas quickly, and spot implementation issues
+                        early.
                       </li>
                     </ul>
                   </div>
@@ -311,12 +312,12 @@ const ProjectModal = ({ id, onClose }) => {
                           Before
                         </h3>
                         <p className="text-xl text-text-secondary mt-4">
-                          The original confirmation and enrollment management
-                          screen was dense, visually dated, and only loosely
-                          aligned with the organization&apos;s design standards.
-                          Core actions were hard to spot, forcing users to hunt
-                          through multiple controls just to confirm or update
-                          their enrollment.
+                          The legacy confirmation and enrollment screen was dense and hard to
+                          scan. Primary tasks were buried among secondary controls, the visual
+                          hierarchy didn&apos;t match real user goals, and there was little
+                          guidance around what would happen next. People had to slow down,
+                          reread, and double-check details just to feel confident that their
+                          enrollment was correct.
                         </p>
                       </div>
                     </div>
@@ -341,13 +342,12 @@ const ProjectModal = ({ id, onClose }) => {
                             After (Mobile & Desktop)
                           </h3>
                           <p className="text-xl text-text-secondary mt-4">
-                            The updated 320px multi-enroll screen introduces a
-                            clear primary CTA, calmer hierarchy, and obvious
-                            affordances so users can confirm, cancel, or adjust
-                            their enrollment without digging through hidden
-                            controls. The desktop version mirrors the same
-                            structure and lives in the hero image at the top of
-                            this case study.
+                            The redesigned flow surfaces the primary task first—confirming or
+                            updating enrollment—then supports secondary actions like cancellations
+                            or adjustments. Clear sectioning, consistent labels, and obvious
+                            affordances reduce cognitive load, while the mobile and desktop
+                            layouts share the same underlying structure so users don&apos;t have
+                            to relearn the experience across devices.
                           </p>
                         </div>
                       )}
@@ -377,18 +377,19 @@ const ProjectModal = ({ id, onClose }) => {
                           Working Within a Global Design System
                         </h3>
                         <p className="text-xl text-text-secondary mt-4">
-                          The organization already had a strong visual identity.
-                          My job wasn&apos;t to reinvent it, but to apply it
-                          correctly to a complex registration context. That meant
-                          respecting locked trademarks, typography rules, and
-                          colour usage while still making the interface feel
-                          clearer and more modern.
+                          The organization already had a mature visual identity and
+                          non-negotiable guidelines. My role was to translate that system into a
+                          complex registration flow without introducing one-off patterns. I
+                          mapped existing typography, colour, and component conventions to the
+                          new screens so the experience felt native to the broader ecosystem
+                          instead of like an exception.
                         </p>
                         <p className="text-xl text-text-secondary mt-4">
-                          In fast-paced working sessions with the design standards
-                          team and DevOps, I walked stakeholders through why
-                          certain conventions mattered—so the new flow stayed
-                          fully aligned with the broader dhamma.org ecosystem.
+                          In focused working sessions with the design standards team and
+                          DevOps, I walked through key decisions—why components were grouped,
+                          which states we needed to support, and how success and error states
+                          should behave—so everyone understood the rationale behind the final
+                          UI.
                         </p>
                       </div>
                     </div>
@@ -418,15 +419,14 @@ const ProjectModal = ({ id, onClose }) => {
                       {/* Granularity paragraph about hand-off */}
                       <div className="bg-med-background p-8 rounded-card text-text-dark">
                         <h3 className="text-h3 font-heading font-bold text-text-dark">
-                          Granular Specs for Confident Hand-off
+                           Detailed Specs for Confident Handoff
                         </h3>
                         <p className="text-xl text-text-secondary mt-4">
-                          The grid overlays, typography scales, colour tokens and
-                          component guides gave the DevOps team pixel-level
-                          clarity. Every heading, label, and control had a defined
-                          size, weight, and spacing, making it much easier to
-                          implement the layout faithfully and keep future states
-                          consistent as the product evolves.
+                          I delivered a set of annotated screens with grid overlays, spacing
+                          rules, and component usage notes, along with examples of different
+                          states (empty, partial, full, error). This gave the DevOps team a
+                          clear reference for implementation and reduced back-and-forth around
+                          layout, responsiveness, and edge cases as the flow evolved.
                         </p>
                       </div>
                     </div>
@@ -461,17 +461,16 @@ const ProjectModal = ({ id, onClose }) => {
                           Fast, Cross-functional Delivery
                         </h3>
                         <p className="text-xl text-text-secondary mt-4">
-                          I partnered closely with the registration DevOps team
-                          to make sure the design was technically feasible and
-                          easy to maintain. We iterated in short working
-                          sessions, reviewing builds against the specs until the
-                          implementation matched the design one-to-one.
+                          I partnered closely with the registration DevOps lead to keep design
+                          and implementation aligned. We reviewed builds against the Figma
+                          specs in short working sessions, resolving questions on the spot and
+                          updating designs when constraints surfaced. This pairing reduced
+                          rework and helped us move from concept to usable experience quickly.
                         </p>
                         <p className="text-xl text-text-secondary mt-4">
-                          These sessions weren&apos;t just about pixels—they
-                          were about aligning on why each convention existed, so
-                          engineers and designers were making the same tradeoffs
-                          for the same reasons.
+                          These conversations weren&apos;t just about pixels—they ensured that
+                          the UI reflected real operational constraints while still honoring
+                          the design system and improving the user journey.
                         </p>
                       </div>
                     </div>
@@ -486,9 +485,11 @@ const ProjectModal = ({ id, onClose }) => {
                         Interactive Prototype
                       </h3>
                       <p className="text-xl text-text-secondary mt-4">
-                        An interactive Figma prototype made it easy to walk
-                        stakeholders through the new flow in short, high-impact
-                        review sessions.
+                        I used an interactive Figma prototype to walk stakeholders through
+                        realistic scenarios—confirming multiple enrollments, updating details,
+                        and cancelling participation. This made it easier to gather feedback
+                        on task flows and copy, not just static screens, and gave the DevOps
+                        team a concrete reference for expected behavior.
                       </p>
 
                       <div className="w-full mt-4">
@@ -509,28 +510,26 @@ const ProjectModal = ({ id, onClose }) => {
                 <RowReveal delay={0.25}>
                   <div className="bg-med-background p-8 rounded-card text-text-dark">
                     <h3 className="text-h3 font-heading font-bold text-text-dark">
-                      How This Reflects My Leadership Style
+                      How I Led the UX Work
                     </h3>
                     <p className="font-body text-xl text-text-secondary mt-4">
-                      This project sits at the intersection of UX, visual design,
-                      and cross-functional delivery—and represents the kind of
-                      work I lead best.
+                      This project sits at the intersection of UX, systems thinking, and
+                      delivery. My focus was to improve the experience without breaking the
+                      operational and branding constraints around it.
                     </p>
                     <ul className="font-body text-xl text-text-secondary mt-4 space-y-2 list-disc list-inside">
                       <li>
-                        I took a legacy, business-critical flow and turned it into
-                        something clearer and more humane without breaking
-                        existing constraints.
+                        I reframed a legacy, business-critical screen around real user
+                        tasks, then redesigned the flow to be easier to scan and act on.
                       </li>
                       <li>
-                        I bridged between design standards, stakeholders, and
-                        DevOps—keeping the brand intact while moving quickly
-                        toward a shippable solution.
+                        I bridged between design standards, stakeholders, and DevOps so the
+                        solution stayed on brand, feasible to build, and aligned with the
+                        broader product ecosystem.
                       </li>
                       <li>
-                        I documented decisions so future designers and engineers
-                        can extend the system instead of reinventing it page by
-                        page.
+                        I documented layout, states, and rationale so future designers and
+                        engineers can extend the pattern instead of reinventing it.
                       </li>
                     </ul>
                   </div>
@@ -539,223 +538,195 @@ const ProjectModal = ({ id, onClose }) => {
             )}
 
             {/* ============================================================
-                CS3 – Linkup / brand & marketing
-               ============================================================ */}
+                CS3 – PrizmPix client web app
+              ============================================================ */}
             {project.id === "cs3" && (
               <>
-                {/* Product photography */}
-                {project.images?.image4 && (
+                {/* Problem & goals + key screen */}
+                {project.images?.screen1 && (
                   <RowReveal>
                     <div className="grid grid-cols-2 gap-16 items-center max-lg:grid-cols-1 max-lg:gap-8">
-                      <div className="bg-white rounded-card p-4 border border-gray-200">
-                        <img
-                          src={project.images.image4}
-                          alt={`${project.title} product photography`}
-                          className="w-full h-auto block rounded-md"
-                        />
-                      </div>
-
-                      <div className="flex flex-col justify-center h-full bg-med-background p-8 rounded-card text-text-dark max-lg:mt-6">
+                      <div className="bg-med-background p-8 rounded-card text-text-dark">
                         <h3 className="text-h3 font-heading font-bold text-text-dark">
-                          Art Direction & Product Photography
+                          Context & Goals
                         </h3>
                         <p className="font-body text-xl text-text-secondary mt-4">
-                          I led the visual direction for the braided power cable
-                          line—planning the shots, lighting, and compositions to
-                          make a technical product feel aspirational for PC
-                          builders.
+                          PrizmPix needed a web experience that clearly explained the
+                          services, showcased selected work, and made it easy for potential
+                          clients to reach out. My first step was to clarify the primary
+                          user journeys: explore what PrizmPix does, see proof of work, and
+                          decide whether to contact for a project.
                         </p>
+                        <p className="font-body text-xl text-text-secondary mt-4">
+                          That led to a focused structure: a concise value proposition,
+                          scannable service overview, and clear paths into case studies and
+                          contact—designed for people who are evaluating multiple options
+                          and don&apos;t have time to dig.
+                        </p>
+                      </div>
+
+                      <button
+                        type="button"
+                        onClick={() => setExpandedImage(project.images.screen1)}
+                        className="bg-white rounded-card p-4 border border-gray-200 text-left"
+                      >
+                        <img
+                          src={project.images.screen1}
+                          alt={`${project.title} – key overview screen`}
+                          className="w-full h-auto block rounded-md"
+                        />
+                      </button>
+                    </div>
+                  </RowReveal>
+                )}
+
+                {/* Information architecture & navigation */}
+                {(project.images?.screen2 || project.images?.screen3) && (
+                  <RowReveal delay={0.1}>
+                    <div className="grid grid-cols-2 gap-16 items-start max-lg:grid-cols-1 max-lg:gap-8">
+                      <div className="bg-med-background p-8 rounded-card text-text-dark">
+                        <h3 className="text-h3 font-heading font-bold text-text-dark">
+                          Information Architecture & Flows
+                        </h3>
+                        <p className="font-body text-xl text-text-secondary mt-4">
+                          I organized the site around the decisions a prospective client
+                          actually makes: “What do you offer?”, “Is your work relevant to
+                          my needs?”, and “Do I trust you enough to get in touch?” The
+                          navigation reflects these questions, with clear entry points into
+                          services, case studies, and about content instead of a long menu
+                          of pages.
+                        </p>
+                        <p className="font-body text-xl text-text-secondary mt-4">
+                          Each page is structured as a flow rather than a gallery of
+                          visuals—headlines, supporting copy, and interaction points guide
+                          users toward the next meaningful step instead of leaving them to
+                          guess where to go.
+                        </p>
+                      </div>
+
+                      <div className="space-y-6">
+                        {project.images?.screen2 && (
+                          <button
+                            type="button"
+                            onClick={() => setExpandedImage(project.images.screen2)}
+                            className="bg-white rounded-card p-4 border border-gray-200 w-full text-left"
+                          >
+                            <img
+                              src={project.images.screen2}
+                              alt={`${project.title} – content / case study screen`}
+                              className="w-full h-auto block rounded-md"
+                            />
+                          </button>
+                        )}
+                        {project.images?.screen3 && (
+                          <button
+                            type="button"
+                            onClick={() => setExpandedImage(project.images.screen3)}
+                            className="bg-white rounded-card p-4 border border-gray-200 w-full text-left"
+                          >
+                            <img
+                              src={project.images.screen3}
+                              alt={`${project.title} – supporting screen`}
+                              className="w-full h-auto block rounded-md"
+                            />
+                          </button>
+                        )}
                       </div>
                     </div>
                   </RowReveal>
                 )}
 
-                {/* Brand system */}
-                {project.images?.brand && (
-                  <RowReveal delay={0.19}>
+                {/* Responsive layout & contact path */}
+                {project.images?.screen4 && (
+                  <RowReveal delay={0.18}>
                     <div className="grid grid-cols-2 gap-16 items-center max-lg:grid-cols-1 max-lg:gap-8">
-                      <div className="flex flex-col justify-center h-full bg-med-background p-8 rounded-card text-text-dark max-lg:order-last max-lg:mt-6">
+                      <div className="bg-med-background p-8 rounded-card text-text-dark">
                         <h3 className="text-h3 font-heading font-bold text-text-dark">
-                          Brand System for the PC Builder Audience
+                          Responsive Layout & Contact Experience
                         </h3>
                         <p className="font-body text-xl text-text-secondary mt-4">
-                          I helped define a consistent visual language for
-                          Linkup in the PC gaming space: colour palette, tone,
-                          and layout patterns that could flex across Amazon
-                          listings, the website, social, and video.
+                          The interface is designed mobile-first, with key actions—viewing
+                          work and getting in touch—remaining visible and easy to reach on
+                          smaller screens. Components reuse the same spacing, type scales,
+                          and button treatments across breakpoints so the experience feels
+                          consistent whether someone discovers PrizmPix on a phone or a
+                          desktop.
+                        </p>
+                        <p className="font-body text-xl text-text-secondary mt-4">
+                          The contact path is intentionally simple: short copy that frames
+                          the type of projects that are a good fit, followed by a clear,
+                          low-friction way to start a conversation.
                         </p>
                       </div>
 
-                      <div className="bg-white rounded-card p-4 border border-gray-200">
+                      <button
+                        type="button"
+                        onClick={() => setExpandedImage(project.images.screen4)}
+                        className="bg-white rounded-card p-4 border border-gray-200 text-left"
+                      >
                         <img
-                          src={project.images.brand}
-                          alt={`${project.title} brand system visuals`}
+                          src={project.images.screen4}
+                          alt={`${project.title} – responsive / contact screen`}
                           className="w-full h-auto block rounded-md"
                         />
-                      </div>
+                      </button>
                     </div>
                   </RowReveal>
                 )}
 
-                {/* Graphic templates */}
-                {project.images?.components && (
-                  <RowReveal delay={0.19}>
-                    <div className="grid grid-cols-2 gap-16 items-center max-lg:grid-cols-1 max-lg:gap-8">
-                      <div className="bg-white rounded-card p-4 border border-gray-200">
-                        <img
-                          src={project.images.components}
-                          alt={`${project.title} detail product imagery`}
-                          className="w-full h-auto block rounded-md"
-                        />
-                      </div>
+                {/* Optional prototype embed if you add project.prototypeUrl later */}
+                {project.prototypeUrl && (
+                  <RowReveal delay={0.22}>
+                    <div className="bg-med-background p-8 rounded-card text-text-dark">
+                      <h3 className="text-h3 font-heading font-bold text-text-dark">
+                        Interactive Prototype
+                      </h3>
+                      <p className="font-body text-xl text-text-secondary mt-4">
+                        An interactive Figma prototype made it easier to review the end-to-end
+                        experience with the client, focusing on how users move between
+                        services, case studies, and contact rather than just isolated screens.
+                      </p>
 
-                      <div className="flex flex-col justify-center h-full bg-med-background p-8 rounded-card text-text-dark max-lg:mt-6">
-                        <h3 className="text-h3 font-heading font-bold text-text-dark">
-                          Graphic Templates & Brand System
-                        </h3>
-                        <p className="font-body text-xl text-text-secondary mt-4">
-                          I created Illustrator templates and a flexible brand
-                          system built around consistent typography, colour
-                          palettes, and layout patterns, making it easier to
-                          produce campaign-ready collateral.
-                        </p>
-                      </div>
-                    </div>
-                  </RowReveal>
-                )}
-
-                {/* Extra campaign visual */}
-                {project.images?.image5 && (
-                  <RowReveal delay={0.24}>
-                    <div className="grid grid-cols-2 gap-16 items-center max-lg:grid-cols-1 max-lg:gap-8">
-                      <div className="bg-med-background p-8 rounded-card text-text-dark max-lg:order-last max-lg:mt-6">
-                        <h3 className="text-h3 font-heading font-bold text-text-dark">
-                          Campaign-Ready Visual Variations
-                        </h3>
-                        <p className="font-body text-xl text-text-secondary mt-4">
-                          To support different platforms and formats, I built
-                          out alternate crops and compositions that kept the
-                          core look intact while adapting to thumbnails,
-                          banners, and marketplace image requirements.
-                        </p>
-                      </div>
-
-                      <div className="bg-white rounded-card p-4 border border-gray-200">
-                        <img
-                          src={project.images.image5}
-                          alt={`${project.title} additional campaign visual`}
-                          className="w-full h-auto block rounded-md"
-                        />
-                      </div>
-                    </div>
-                  </RowReveal>
-                )}
-
-                {/* Video */}
-                {project.videoUrl && (
-                  <RowReveal delay={0.28}>
-                    <div className="grid grid-cols-2 gap-16 items-center max-lg:grid-cols-1 max-lg:gap-8">
-                      <div className="bg-dark-background rounded-card overflow-hidden">
-                        <div className="w-full aspect-video">
+                      <div className="w-full mt-4">
+                        <div className="w-full max-w-4xl mx-auto aspect-[16/9] bg-white rounded-card overflow-hidden border border-gray-200">
                           <iframe
-                            title="Linkup product video"
-                            src={getYouTubeEmbedUrl(project.videoUrl)}
+                            title="PrizmPix web app prototype"
+                            src={project.prototypeUrl}
                             className="w-full h-full"
-                            frameBorder="0"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            style={{ border: "1px solid rgba(0, 0, 0, 0.1)" }}
                             allowFullScreen
                           />
                         </div>
                       </div>
-
-                      <div className="flex flex-col justify-center h-full bg-med-background p-8 rounded-card text-text-dark max-lg:mt-6">
-                        <h3 className="text-h3 font-heading font-bold text-text-dark">
-                          Product Video & Logo Animation
-                        </h3>
-                        <p className="font-body text-xl text-text-secondary mt-4">
-                          I partnered with a motion designer to develop the
-                          Linkup logo animation and then directed and shot the
-                          flagship product video.
-                        </p>
-                        <p className="font-body text-sm text-text-secondary mt-4">
-                          Watch the product spot directly in this case study.
-                        </p>
-                      </div>
                     </div>
                   </RowReveal>
                 )}
 
-                {/* Marketing & performance */}
-                {project.marketingImages &&
-                  project.marketingImages.length > 0 && (
-                    <RowReveal delay={0.32}>
-                      <div className="grid grid-cols-2 gap-16 items-start max-lg:grid-cols-1 max-lg:gap-8">
-                        <div className="bg-med-background p-8 rounded-card text-text-dark">
-                          <h3 className="text-h3 font-heading font-bold text-text-dark">
-                            Marketing & Performance
-                          </h3>
-                          <p className="font-body text-xl text-text-secondary mt-4">
-                            Beyond the visuals, I managed day-to-day marketing
-                            activity around the product line—YouTube, Facebook,
-                            Instagram content, analytics reporting, and Amazon
-                            PPC campaigns.
-                          </p>
-                        </div>
-
-                        <div className="space-y-4">
-                          <p className="font-body text-sm text-text-secondary">
-                            Selected marketing stills – tap to expand:
-                          </p>
-                          <div className="grid grid-cols-2 gap-4">
-                            {project.marketingImages.map((src, index) => (
-                              <button
-                                key={`${project.id}-mkt-${index}`}
-                                type="button"
-                                onClick={() => setExpandedImage(src)}
-                                className="group text-left"
-                              >
-                                <div className="rounded-card overflow-hidden border border-gray-200">
-                                  <img
-                                    src={src}
-                                    alt={`${project.title} marketing visual ${
-                                      index + 1
-                                    }`}
-                                    className="w-full h-[220px] object-cover transition-transform duration-300 group-hover:scale-[1.03]"
-                                  />
-                                </div>
-                              </button>
-                            ))}
-                          </div>
-                        </div>
-                      </div>
-                    </RowReveal>
-                  )}
-
-                {/* Creative Lead takeaway */}
-                <RowReveal delay={0.2}>
+                {/* UX/Product takeaway */}
+                <RowReveal delay={0.26}>
                   <div className="bg-med-background p-8 rounded-card text-text-dark">
                     <h3 className="text-h3 font-heading font-bold text-text-dark">
-                      What This Shows About Me as a Creative Lead
+                      What This Shows About My UX & Product Work
                     </h3>
                     <p className="font-body text-xl text-text-secondary mt-4">
-                      This case study brings together brand, product
-                      storytelling, and performance marketing over several years
-                      of work.
+                      This project brings together information architecture, interface design,
+                      and practical delivery for a real client. It reflects how I approach
+                      end-to-end UX and product work, even on a relatively small surface area.
                     </p>
                     <ul className="font-body text-xl text-text-secondary mt-4 space-y-2 list-disc list-inside">
                       <li>
-                        I owned the visual system for a flagship product line,
-                        from product photography direction to
-                        marketplace-ready assets.
+                        I clarified user goals and structured the site around the actual
+                        decisions prospects need to make, instead of just listing pages.
                       </li>
                       <li>
-                        I worked closely with stakeholders across marketing and
-                        leadership to keep the creative consistent while we
-                        experimented with new formats.
+                        I designed a reusable set of layouts and components that can scale as
+                        PrizmPix adds more services or case studies, without fragmenting the
+                        experience.
                       </li>
                       <li>
-                        I tracked performance via analytics and campaigns, using
-                        results to refine the creative.
+                        I collaborated closely around implementation so that the built product
+                        matches the intended flow and interaction details, not just the static
+                        mocks.
                       </li>
                     </ul>
                   </div>
@@ -763,32 +734,6 @@ const ProjectModal = ({ id, onClose }) => {
               </>
             )}
 
-            {/* GitHub link card – optional */}
-            {project.githubLink && (
-              <RowReveal delay={0.19}>
-                <div className="mt-10 bg-med-background p-6 rounded-card flex flex-col gap-4 items-start text-text-dark">
-                  <div>
-                    <h3 className="text-h4 font-heading font-bold">
-                      View the Code on GitHub
-                    </h3>
-                    <p className="font-body text-text-secondary mt-1">
-                      This project is also available as a live React codebase,
-                      including the animation and layout system used in this
-                      case study.
-                    </p>
-                  </div>
-                  <a
-                    href={project.githubLink}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="inline-flex items-center gap-2 px-5 py-2 rounded-md bg-primary-button text-white font-nav font-bold text-base hover:bg-opacity-90"
-                  >
-                    Open GitHub Repo
-                    <ArrowUpRight size={18} />
-                  </a>
-                </div>
-              </RowReveal>
-            )}
           </div>
         </div>
 
