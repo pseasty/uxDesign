@@ -122,6 +122,41 @@ const ProjectModal = ({ id, onClose }) => {
             </p>
           </motion.section>
 
+          {/* Links Section - ADD THIS HERE */}
+          {(project.websiteLink || project.githubLink) && (
+            <motion.div
+              className="mt-8 flex flex-wrap gap-4"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+            >
+              {project.websiteLink && project.websiteLink !== "#" && (
+                <a
+                  href={project.websiteLink.startsWith("http") ? project.websiteLink : `https://${project.websiteLink}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-primary-button text-white font-nav font-bold hover:bg-opacity-80 transition-colors"
+                >
+                  View Live Site
+                  <ArrowUpRight size={18} />
+                </a>
+              )}
+              
+              {project.githubLink && (
+                <a
+                  href={project.githubLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-gray-800 text-white font-nav font-bold hover:bg-gray-700 transition-colors"
+                >
+                  View on GitHub
+                  <ArrowUpRight size={18} />
+                </a>
+              )}
+            </motion.div>
+          )}
+
+
           <div className="mt-20 space-y-10">
             {/* Main splash image */}
             {project.images?.main && (
@@ -542,201 +577,195 @@ const ProjectModal = ({ id, onClose }) => {
               ============================================================ */}
             {project.id === "cs3" && (
               <>
-                {/* Problem & goals + key screen */}
-                {project.images?.screen1 && (
+                {/* 1. Persona + Empathy Map (single horizontal image + paragraph card) */}
+                {project.images?.empathyMap && (
                   <RowReveal>
-                    <div className="grid grid-cols-2 gap-16 items-center max-lg:grid-cols-1 max-lg:gap-8">
-                      <div className="bg-med-background p-8 rounded-card text-text-dark">
-                        <h3 className="text-h3 font-heading font-bold text-text-dark">
-                          Context & Goals
-                        </h3>
-                        <p className="font-body text-xl text-text-secondary mt-4">
-                          PrizmPix needed a web experience that clearly explained the
-                          services, showcased selected work, and made it easy for potential
-                          clients to reach out. My first step was to clarify the primary
-                          user journeys: explore what PrizmPix does, see proof of work, and
-                          decide whether to contact for a project.
-                        </p>
-                        <p className="font-body text-xl text-text-secondary mt-4">
-                          That led to a focused structure: a concise value proposition,
-                          scannable service overview, and clear paths into case studies and
-                          contact—designed for people who are evaluating multiple options
-                          and don&apos;t have time to dig.
-                        </p>
-                      </div>
-
-                      <button
-                        type="button"
-                        onClick={() => setExpandedImage(project.images.screen1)}
-                        className="bg-white rounded-card p-4 border border-gray-200 text-left"
-                      >
+                    <div className="space-y-8">
+                      {/* Horizontal persona/empathy image */}
+                      <div className="bg-white rounded-card p-4 border border-gray-200">
                         <img
-                          src={project.images.screen1}
-                          alt={`${project.title} – key overview screen`}
+                          src={project.images.empathyMap}
+                          alt="Jenna business owner persona and empathy map"
                           className="w-full h-auto block rounded-md"
                         />
-                      </button>
-                    </div>
-                  </RowReveal>
-                )}
-
-                {/* Information architecture & navigation */}
-                {(project.images?.screen2 || project.images?.screen3) && (
-                  <RowReveal delay={0.1}>
-                    <div className="grid grid-cols-2 gap-16 items-start max-lg:grid-cols-1 max-lg:gap-8">
-                      <div className="bg-med-background p-8 rounded-card text-text-dark">
-                        <h3 className="text-h3 font-heading font-bold text-text-dark">
-                          Information Architecture & Flows
-                        </h3>
-                        <p className="font-body text-xl text-text-secondary mt-4">
-                          I organized the site around the decisions a prospective client
-                          actually makes: “What do you offer?”, “Is your work relevant to
-                          my needs?”, and “Do I trust you enough to get in touch?” The
-                          navigation reflects these questions, with clear entry points into
-                          services, case studies, and about content instead of a long menu
-                          of pages.
-                        </p>
-                        <p className="font-body text-xl text-text-secondary mt-4">
-                          Each page is structured as a flow rather than a gallery of
-                          visuals—headlines, supporting copy, and interaction points guide
-                          users toward the next meaningful step instead of leaving them to
-                          guess where to go.
-                        </p>
                       </div>
 
-                      <div className="space-y-6">
-                        {project.images?.screen2 && (
-                          <button
-                            type="button"
-                            onClick={() => setExpandedImage(project.images.screen2)}
-                            className="bg-white rounded-card p-4 border border-gray-200 w-full text-left"
-                          >
-                            <img
-                              src={project.images.screen2}
-                              alt={`${project.title} – content / case study screen`}
-                              className="w-full h-auto block rounded-md"
-                            />
-                          </button>
-                        )}
-                        {project.images?.screen3 && (
-                          <button
-                            type="button"
-                            onClick={() => setExpandedImage(project.images.screen3)}
-                            className="bg-white rounded-card p-4 border border-gray-200 w-full text-left"
-                          >
-                            <img
-                              src={project.images.screen3}
-                              alt={`${project.title} – supporting screen`}
-                              className="w-full h-auto block rounded-md"
-                            />
-                          </button>
-                        )}
+                      {/* Descriptive paragraph in a card */}
+                      <div className="bg-med-background p-8 rounded-card text-text-dark">
+                        <h3 className="text-h3 font-heading font-bold text-text-dark">
+                          Jenna — Business Owner Persona
+                        </h3>
+                        <p className="font-body text-xl text-text-secondary mt-4">
+                          Jenna represents the kind of busy business owner this site is
+                          designed for: she knows her website should be a revenue-driving
+                          system, not just a brochure, but she doesn&apos;t have the time
+                          or appetite for technical details. Mapping her goals,
+                          frustrations, and behaviours confirmed that she doesn&apos;t want
+                          more features—she wants more clarity. That insight shaped how I
+                          structured the content and tone: less technical detail up front,
+                          more guidance, examples, and next steps.
+                        </p>
                       </div>
                     </div>
                   </RowReveal>
                 )}
 
-                {/* Responsive layout & contact path */}
-                {project.images?.screen4 && (
-                  <RowReveal delay={0.18}>
-                    <div className="grid grid-cols-2 gap-16 items-center max-lg:grid-cols-1 max-lg:gap-8">
-                      <div className="bg-med-background p-8 rounded-card text-text-dark">
-                        <h3 className="text-h3 font-heading font-bold text-text-dark">
-                          Responsive Layout & Contact Experience
-                        </h3>
-                        <p className="font-body text-xl text-text-secondary mt-4">
-                          The interface is designed mobile-first, with key actions—viewing
-                          work and getting in touch—remaining visible and easy to reach on
-                          smaller screens. Components reuse the same spacing, type scales,
-                          and button treatments across breakpoints so the experience feels
-                          consistent whether someone discovers PrizmPix on a phone or a
-                          desktop.
-                        </p>
-                        <p className="font-body text-xl text-text-secondary mt-4">
-                          The contact path is intentionally simple: short copy that frames
-                          the type of projects that are a good fit, followed by a clear,
-                          low-friction way to start a conversation.
-                        </p>
-                      </div>
-
-                      <button
-                        type="button"
-                        onClick={() => setExpandedImage(project.images.screen4)}
-                        className="bg-white rounded-card p-4 border border-gray-200 text-left"
-                      >
+                {/* 2. Journey Map (full-width image + paragraph card) */}
+                {project.images?.journeyMap && (
+                  <RowReveal>
+                    <div className="mt-16 space-y-8">
+                      <div className="bg-white rounded-card p-4 border border-gray-200">
                         <img
-                          src={project.images.screen4}
-                          alt={`${project.title} – responsive / contact screen`}
+                          src={project.images.journeyMap}
+                          alt="Client experience journey map for Jenna working with PrizmPix"
                           className="w-full h-auto block rounded-md"
                         />
-                      </button>
-                    </div>
-                  </RowReveal>
-                )}
-
-                {/* Optional prototype embed if you add project.prototypeUrl later */}
-                {project.prototypeUrl && (
-                  <RowReveal delay={0.22}>
-                    <div className="bg-med-background p-8 rounded-card text-text-dark">
-                      <h3 className="text-h3 font-heading font-bold text-text-dark">
-                        Interactive Prototype
-                      </h3>
-                      <p className="font-body text-xl text-text-secondary mt-4">
-                        An interactive Figma prototype made it easier to review the end-to-end
-                        experience with the client, focusing on how users move between
-                        services, case studies, and contact rather than just isolated screens.
-                      </p>
-
-                      <div className="w-full mt-4">
-                        <div className="w-full max-w-4xl mx-auto aspect-[16/9] bg-white rounded-card overflow-hidden border border-gray-200">
-                          <iframe
-                            title="PrizmPix web app prototype"
-                            src={project.prototypeUrl}
-                            className="w-full h-full"
-                            style={{ border: "1px solid rgba(0, 0, 0, 0.1)" }}
-                            allowFullScreen
-                          />
-                        </div>
+                      </div>
+                      <div className="bg-med-background p-8 rounded-card text-text-dark">
+                        <h3 className="text-h3 font-heading font-bold text-text-dark">
+                          Client Experience Journey
+                        </h3>
+                        <p className="font-body text-xl text-text-secondary mt-4">
+                          The journey map outlines Jenna&apos;s path from realizing her
+                          current site is holding the business back, through researching
+                          options, into onboarding, delivery, and ongoing support. It
+                          highlights key emotional moments—uncertainty, overwhelm, relief,
+                          and confidence—which I used to decide where the website should
+                          educate, where it should provide proof, and where it should make
+                          it easy to get in touch.
+                        </p>
                       </div>
                     </div>
                   </RowReveal>
                 )}
 
-                {/* UX/Product takeaway */}
-                <RowReveal delay={0.26}>
-                  <div className="bg-med-background p-8 rounded-card text-text-dark">
-                    <h3 className="text-h3 font-heading font-bold text-text-dark">
-                      What This Shows About My UX & Product Work
-                    </h3>
-                    <p className="font-body text-xl text-text-secondary mt-4">
-                      This project brings together information architecture, interface design,
-                      and practical delivery for a real client. It reflects how I approach
-                      end-to-end UX and product work, even on a relatively small surface area.
-                    </p>
-                    <ul className="font-body text-xl text-text-secondary mt-4 space-y-2 list-disc list-inside">
-                      <li>
-                        I clarified user goals and structured the site around the actual
-                        decisions prospects need to make, instead of just listing pages.
-                      </li>
-                      <li>
-                        I designed a reusable set of layouts and components that can scale as
-                        PrizmPix adds more services or case studies, without fragmenting the
-                        experience.
-                      </li>
-                      <li>
-                        I collaborated closely around implementation so that the built product
-                        matches the intended flow and interaction details, not just the static
-                        mocks.
-                      </li>
-                    </ul>
-                  </div>
-                </RowReveal>
+                {/* 3. Lo-fi Wireframes (full-width image + paragraph card) */}
+                {project.images?.loFi && (
+                  <RowReveal>
+                    <div className="mt-16 space-y-8">
+                      <div className="bg-white rounded-card p-4 border border-gray-200">
+                        <img
+                          src={project.images.loFi}
+                          alt="Lo-fidelity PrizmPix home page wireframe sketches"
+                          className="w-full h-auto block rounded-md"
+                        />
+                      </div>
+                      <div className="bg-med-background p-8 rounded-card text-text-dark">
+                        <h3 className="text-h3 font-heading font-bold text-text-dark">
+                          Lo-Fi Wireframes — Exploring Structure
+                        </h3>
+                        <p className="font-body text-xl text-text-secondary mt-4">
+                          The lo-fi sketches focused on structure rather than style: how
+                          quickly can Jenna understand what PrizmPix does, who it serves,
+                          and what the next step is? I experimented with different ways of
+                          prioritizing the hero message, service categories, proof (case
+                          studies and testimonials), and contact entry points. Working at
+                          this level made it easy to test alternative layouts without
+                          getting stuck on visual details or motion.
+                        </p>
+                      </div>
+                    </div>
+                  </RowReveal>
+                )}
+
+                {/* 4. Mid-fi Wireframes (full-width image + paragraph card) */}
+                {project.images?.midFi && (
+                  <RowReveal>
+                    <div className="mt-16 space-y-8">
+                      <div className="bg-white rounded-card p-4 border border-gray-200">
+                        <img
+                          src={project.images.midFi}
+                          alt="Mid-fidelity PrizmPix wireframes showing layout and components"
+                          className="w-full h-auto block rounded-md"
+                        />
+                      </div>
+                      <div className="bg-med-background p-8 rounded-card text-text-dark">
+                        <h3 className="text-h3 font-heading font-bold text-text-dark">
+                          Mid-Fi Wireframes — Layout & Component System
+                        </h3>
+                        <p className="font-body text-xl text-text-secondary mt-4">
+                          In the mid-fi wireframes, I translated the strongest sketch
+                          directions into a defined grid, typography scale, and reusable
+                          modules. Sections like “Custom Website Builds,” “Our Work,” and
+                          “How We Work” became components that can scale across future
+                          pages. This is also where I planned the motion language—where the
+                          GIF text mask, Lottie animations, and hover states would live so
+                          they support the narrative instead of distracting from it.
+                        </p>
+                      </div>
+                    </div>
+                  </RowReveal>
+                )}
+
+                {/* 5. Hi-fi Designs (two vertical mocks) + Outcome card */}
+                {(project.images?.hiFi1 || project.images?.hiFi2) && (
+                  <RowReveal>
+                    <div className="mt-16 space-y-8">
+                      <div className="grid grid-cols-2 gap-16 max-lg:grid-cols-1 max-lg:gap-8">
+                        {project.images?.hiFi1 && (
+                          <div className="bg-white rounded-card p-4 border border-gray-200">
+                            <img
+                              src={project.images.hiFi1}
+                              alt="Final PrizmPix home page design"
+                              className="w-full h-auto block rounded-md"
+                            />
+                          </div>
+                        )}
+                        {project.images?.hiFi2 && (
+                          <div className="bg-white rounded-card p-4 border border-gray-200">
+                            <img
+                              src={project.images.hiFi2}
+                              alt="Final PrizmPix work / case studies page design"
+                              className="w-full h-auto block rounded-md"
+                            />
+                          </div>
+                        )}
+                      </div>
+
+                      {/* Outcome / success summary */}
+                      <div className="bg-med-background p-8 rounded-card text-text-dark">
+                        <h3 className="text-h3 font-heading font-bold text-text-dark">
+                          Outcome
+                        </h3>
+                        <p className="font-body text-xl text-text-secondary mt-4">
+                          {project.outcome ||
+                            "By aligning the website to the real emotional and operational needs of business owners, the final design became more than a marketing site — it became a clear decision path. Users can understand services, evaluate previous work, and reach out confidently with far fewer unknowns."}
+                        </p>
+                      </div>
+                    </div>
+                  </RowReveal>
+                )}
+
               </>
             )}
-
           </div>
         </div>
 
+       {/* Modal Footer CTA - ADD THIS HERE */}
+        <div className="mt-20 bg-dark-background py-16">
+          <div className="max-w-container mx-auto px-4 lg:px-[110px]">
+            <div className="max-w-2xl mx-auto text-center">
+              <h3 className="text-h3 font-heading font-bold text-white">
+                Interested in working together?
+              </h3>
+              <p className="text-gray-400 mt-4 text-xl">
+                I'm always open to discussing new projects, creative ideas, or opportunities to be part of your vision.
+              </p>
+              <button
+                onClick={() => {
+                  onClose();
+                  setTimeout(() => {
+                    document.getElementById("contact-section")?.scrollIntoView({ behavior: "smooth" });
+                  }, 300);
+                }}
+                className="mt-8 px-8 py-3 rounded-md font-nav font-bold text-lg bg-primary-button text-white hover:bg-opacity-80 transition-all duration-300"
+              >
+                Get In Touch
+              </button>
+            </div>
+          </div>
+        </div>
+        
         {/* Expanded image overlay for cs3 thumbnails */}
         {expandedImage && (
           <div

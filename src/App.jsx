@@ -530,7 +530,7 @@ const WorkPage = ({ onProjectSelect, introPhase }) => {
         onProjectSelect={onProjectSelect}
       />
 
-      {/* Row 1 – DESIGN · Case Study 1 */}
+      {/* Row 2 – DESIGN · Case Study 2 */}
       <WorkSection
         index={1}
         title="DESIGN"
@@ -540,7 +540,7 @@ const WorkPage = ({ onProjectSelect, introPhase }) => {
         onProjectSelect={onProjectSelect}
       />
 
-      {/* Row 1 – DELIVER · Case Study 3 */}
+      {/* Row 3 – DELIVER · Case Study 3 */}
       <WorkSection
         index={2}
         title="DELIVER"
@@ -549,21 +549,25 @@ const WorkPage = ({ onProjectSelect, introPhase }) => {
         onProjectSelect={onProjectSelect}
       />
 
-
-      {/* Bio block below case studies */}
-      <div className="mt-16">
+      {/* Bio block below case studies - hidden until intro complete */}
+      <motion.div 
+        className="mt-16"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: introPhase === "settled" ? 1 : 0 }}
+        transition={{ duration: 0.5, delay: 0.8 }}
+      >
         <div className="max-w-[576px] mx-auto text-center">
           <h3 className="text-h3 font-bold font-heading">Patrick East</h3>
           <p className="mt-4 text-text-secondary text-xl text-left">
             My passion for design and typography started when I was 15, doing
             large-scale mural and typographic art. It gave me a deep, hands-on
             understanding of form, composition, and letter structure that I
-            didn’t have a name for back then. It’s where I first learned to
-            master the craft and earn respect. I’ve spent my entire professional
+            didn't have a name for back then. It's where I first learned to
+            master the craft and earn respect. I've spent my entire professional
             career, from graphic design to UX, refining that same passion.
           </p>
         </div>
-      </div>
+      </motion.div>
     </div>
   );
 };
@@ -578,14 +582,18 @@ const WorkSection = ({
 }) => {
   const isFirstRow = index === 0;
 
-  const startOffsets = [0, 0, 0];
-  const overshootOffsets = [-200, -250, -300];
+  // Without cards, headings are roughly 200px apart (section padding + heading height)
+  // To stack them at the same spot during overshoot:
+  // - DEFINE (index 0): move DOWN to meet the others
+  // - DESIGN (index 1): stay roughly in place (this is our anchor point)
+  // - DELIVER (index 2): move UP to meet the others
+  const overshootOffsets = [50, 0, -50]; // Positive = down, Negative = up
 
   const headingVariants = {
     start: (i) => ({
       opacity: 0,
       scale: 0.45,
-      y: startOffsets[i],
+      y: overshootOffsets[i],
       color: "#FFFFFF",
     }),
     overshoot: (i) => ({
@@ -671,24 +679,142 @@ const ProjectCard = ({ project, onSelect, revealType, introReady }) => {
   const mobileThumb = project.mobileThumbnail || desktopThumb;
 
   const isIntroCard = revealType === "intro";
-  
   const [hasRevealed, setHasRevealed] = useState(false);
-  
-  // For intro cards, we need to wait for the animation to complete, not just introReady
-  const isRevealed = hasRevealed;
+  const [isInView, setIsInView] = useState(false);
+  const [canTriggerReveal, setCanTriggerReveal] = useState(false);
 
+  const isRevealed = hasRevealed;
+  const isCS2 = project.id === "cs2";
+
+  // For non-intro cards, delay the ability to trigger reveal
+  // This prevents cards already in viewport from revealing during intro
+  useEffect(() => {
+    if (!isIntroCard && introReady) {
+      const timer = setTimeout(() => {
+        setCanTriggerReveal(true);
+      }, 100);
+      return () => clearTimeout(timer);
+    }
+  }, [isIntroCard, introReady]);
+
+  // For non-intro cards, don't render until intro is complete
+  if (!isIntroCard && !introReady) {
+    return null;
+  }
+
+  // INTRO CARD: Height animation reveal
+  if (isIntroCard) {
+    return (
+      <motion.div
+        className={`group relative cursor-pointer w-full max-w-[1200px] mx-auto overflow-hidden ${
+          !isRevealed ? "pointer-events-none" : ""
+        }`}
+        style={{ zIndex: 1 }}
+        initial={{ height: 0, opacity: 0 }}
+        animate={
+          introReady
+            ? { height: 520, opacity: 1 }
+            : { height: 0, opacity: 0 }
+        }
+        transition={{
+          height: {
+            duration: 0.8,
+            delay: 0,
+            ease: [0.2, 0.8, 0.3, 1],
+          },
+          opacity: {
+            duration: 0.4,
+            delay: 0,
+          },
+        }}
+        whileHover={isRevealed ? { y: -6 } : {}}
+        onClick={() => isRevealed && onSelect && onSelect(project.id || project)}
+      >
+        <div
+          className={`relative w-full h-[520px] rounded-3xl overflow-hidden transition-all duration-300`}
+        >
+          <picture>
+            <source media="(max-width: 768px)" srcSet={mobileThumb} />
+            <img
+              src={desktopThumb}
+              alt={project.title}
+              className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.04]"
+            />
+          </picture>
+
+          <button
+            type="button"
+            onClick={(e) => {
+              e.stopPropagation();
+              if (isRevealed) {
+                onSelect && onSelect(project.id || project);
+              }
+            }}
+            className={`
+              absolute left-6 right-6 bottom-6 z-20
+              bg-primary-button text-white rounded-card
+              flex items-center justify-between gap-4
+              px-6 py-3 shadow-lg
+              transition-all duration-300
+              ${isRevealed 
+                ? "translate-y-full opacity-0 group-hover:translate-y-0 group-hover:opacity-100" 
+                : "translate-y-full opacity-0 pointer-events-none"
+              }
+            `}
+          >
+            <div className="text-left">
+              <p className="font-nav font-bold text-lg leading-tight">
+                {project.title}
+              </p>
+              {project.cardLabel && (
+                <p className="text-sm opacity-80 mt-0.5">{project.cardLabel}</p>
+              )}
+            </div>
+            <ArrowUpRight size={28} />
+          </button>
+        </div>
+
+        {/* Track when reveal is complete */}
+        {introReady && !hasRevealed && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 0 }}
+            transition={{ delay: 0.9 }}
+            onAnimationComplete={() => setHasRevealed(true)}
+            style={{ position: 'absolute', pointerEvents: 'none' }}
+          />
+        )}
+      </motion.div>
+    );
+  }
+
+  // NON-INTRO CARDS: Overlay slide down on scroll (Chrome compatible)
   return (
     <motion.div
       className={`group relative cursor-pointer w-full max-w-[1200px] mx-auto ${
         !isRevealed ? "pointer-events-none" : ""
       }`}
       style={{ zIndex: 1 }}
+      initial={{ opacity: 0, y: 40 }}
+      animate={canTriggerReveal && isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }}
+      transition={{
+        duration: 0.6,
+        ease: [0.2, 0.8, 0.3, 1],
+      }}
       whileHover={isRevealed ? { y: -6 } : {}}
-      transition={{ type: "spring", stiffness: 260, damping: 20 }}
       onClick={() => isRevealed && onSelect && onSelect(project.id || project)}
+      onViewportEnter={() => {
+        if (canTriggerReveal) {
+          setIsInView(true);
+        }
+      }}
+      viewport={{ once: true, amount: 0.2 }}
     >
-      <div className="relative w-full h-[520px] rounded-3xl overflow-hidden">
-        {/* STATIC CONTENT */}
+      <div
+        className={`relative w-full h-[520px] rounded-3xl overflow-hidden transition-all duration-300 ${
+          isCS2 && isRevealed ? "border border-gray-300" : ""
+        }`}
+      >
         <picture>
           <source media="(max-width: 768px)" srcSet={mobileThumb} />
           <img
@@ -698,7 +824,6 @@ const ProjectCard = ({ project, onSelect, revealType, introReady }) => {
           />
         </picture>
 
-        {/* Hover panel */}
         <button
           type="button"
           onClick={(e) => {
@@ -730,46 +855,24 @@ const ProjectCard = ({ project, onSelect, revealType, introReady }) => {
           <ArrowUpRight size={28} />
         </button>
 
-        {/* REVEAL OVERLAY */}
-        {isIntroCard ? (
-          <motion.div
-            className="absolute inset-0 pointer-events-none z-10"
-            initial={{ y: "0%", backgroundColor: "#262626" }}
-            animate={
-              introReady
-                ? { y: "100%", backgroundColor: "#FFFFFF" }
-                : { y: "0%", backgroundColor: "#262626" }
+        {/* OVERLAY - slides down to reveal */}
+        <motion.div
+          className="absolute inset-0 bg-white pointer-events-none z-10 rounded-3xl"
+          initial={{ y: "0%" }}
+          animate={canTriggerReveal && isInView ? { y: "100%" } : { y: "0%" }}
+          transition={{
+            y: {
+              duration: 0.8,
+              delay: 0.2,
+              ease: [0.2, 0.8, 0.3, 1],
+            },
+          }}
+          onAnimationComplete={() => {
+            if (canTriggerReveal && isInView) {
+              setHasRevealed(true);
             }
-            transition={{
-              y: {
-                duration: 0.8,
-                delay: 0.35,
-                ease: [0.2, 0.8, 0.3, 1],
-              },
-              backgroundColor: {
-                duration: 0.8,
-                ease: "easeInOut",
-              },
-            }}
-            onAnimationComplete={() => {
-              if (introReady) {
-                setHasRevealed(true);
-              }
-            }}
-          />
-        ) : (
-          <motion.div
-            className="absolute inset-0 pointer-events-none z-10 bg-white"
-            initial={{ y: "0%" }}
-            whileInView={{ y: "100%" }}
-            viewport={{ once: true, amount: 0.7 }}
-            transition={{
-              duration: 0.7,
-              ease: "easeOut",
-            }}
-            onAnimationComplete={() => setHasRevealed(true)}
-          />
-        )}
+          }}
+        />
       </div>
     </motion.div>
   );
@@ -1015,7 +1118,7 @@ const SkillBar = ({ skill, percentage }) => (
 );
 
 const TestimonialCard = ({ name, title, quote, photo }) => (
-  <div className="bg-med-background text-text-dark p-8 rounded-card">
+<div className="bg-med-background text-text-dark p-8 rounded-card min-h-[360px] flex flex-col">
     <div className="flex items-center mb-4">
       <img
         src={photo || "https://i.imgur.com/5N2gL11.png"}

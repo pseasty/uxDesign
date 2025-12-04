@@ -13,7 +13,7 @@ export const CASE_STUDIES = [
     company: "Personal Project",
     services: "UX Design, UI Design, Design Systems, Front-End Development",
     websiteLink: null,
-    githubLink: "https://github.com/pseasty/CreativeLead",
+    githubLink: "https://github.com/pseasty/uxDesign.git",
     thumbnail: "/CS1PreviewDesktop.png",
     mobileThumbnail: "/CS1PreviewMobile.png",
     images: {
@@ -54,30 +54,31 @@ export const CASE_STUDIES = [
   },
 
 {
-  id: "cs3",
-  heading: "PRODUCT",
-  title: "Designing a Client Web App for PrizmPix",
-  cardLabel: "UX / Product · Client Web App",
-  description:
-    "An end-to-end web experience designed to help potential clients understand PrizmPix services, browse case studies, and reach out for project inquiries. I mapped user goals, structured flows around real decision points, and designed a responsive interface system that translates cleanly from desktop to mobile.",
-  company: "PrizmPix (Client Project)",
-  services:
-    "UX Design, Information Architecture, Interaction Design, Responsive UI, Design System",
-  websiteLink: null,        // add a live link when deployed
-  githubLink: null,         // optional if you host the code
-  thumbnail: "/CS3PreviewDesktop.png",
-  mobileThumbnail: "/CS3PreviewMobile.png",
-  images: {
-    main: "/CS3PreviewDesktop.png",
-
-    // Core screens / flows
-    screen1: "/PrizmPixWebsite1.jpg",
-    screen2: "/PrizmPixWebsite2.jpg",
-    screen3: "/PrizmPixWebsite3.jpg",
-    screen4: "/PrizmPixWebsite4.jpg",
+id: "cs3",
+heading: "PRODUCT",
+title: "Designing a Client Web App for PrizmPix",
+cardLabel: "UX / Product · Client Web App",
+description:
+"PrizmPix is a client-facing web experience designed for busy business owners who know their website should drive revenue but feel overwhelmed by technical jargon and endless options. The site reduces cognitive load, builds trust, and guides them from uncertainty to a clear, scalable digital solution.",
+company: "PrizmPix (Client Project)",
+services:
+"UX Research, Journey Mapping, Information Architecture, Interaction Design, Responsive UI, Design System",
+websiteLink: "https://www.prizmpix.com", // add the live URL later
+githubLink: "https://github.com/pseasty/Prizmpix-Website.git",
+thumbnail: "/CS3PreviewDesktop.png",
+mobileThumbnail: "/CS3PreviewMobile.png",
+images: {
+main: "/CS3PreviewDesktop.png",
+empathyMap: "/EmpathyMapPrizmpix.jpg",
+journeyMap: "/CustomerJourneyMap.jpg",
+loFi: "/PrizmpixLofiWireframe.jpg",
+midFi: "/PrizmpixMidWireframe.jpg",
+hiFi1: "/PrizmPixWebsite1.jpg",
+hiFi2: "/PrizmPixWebsite3.jpg",
   },
-  // optional, if you embed a prototype in the modal later
-  // prototypeUrl: "",
+// NEW: success summary / outcome lives in data too
+outcome:
+"By aligning the website to the real emotional and operational needs of business owners, the final design became more than a marketing site — it became a clear decision path. Users can understand services, evaluate previous work, and reach out confidently with far fewer unknowns.",
 },
 
 ];
