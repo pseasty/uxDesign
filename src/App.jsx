@@ -6,7 +6,7 @@ import {
   Mail,
   Phone,
   MapPin,
-  Instagram,
+  Github,
   Facebook,
   Linkedin,
   ArrowUpRight,
@@ -306,9 +306,23 @@ const ContactSection = () => {
             <div className="mt-12 pt-8 border-top border-gray-300 border-t">
               <p className="font-bold mb-4">Connect with me</p>
               <div className="flex space-x-4">
-                <Instagram className="w-8 h-8 text-text-secondary hover:text-text-dark cursor-pointer" />
-                <Facebook className="w-8 h-8 text-text-secondary hover:text-text-dark cursor-pointer" />
-                <Linkedin className="w-8 h-8 text-text-secondary hover:text-text-dark cursor-pointer" />
+                <a
+                  href="https://github.com/pseasty"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-text-secondary hover:text-text-dark transition-colors duration-300"
+                >
+                  <Github className="w-8 h-8" />
+                </a>
+                
+                <a
+                  href="https://www.linkedin.com/in/pseast"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-text-secondary hover:text-text-dark transition-colors duration-300"
+                >
+                  <Linkedin className="w-8 h-8" />
+                </a>
               </div>
             </div>
           </div>

@@ -71,7 +71,7 @@ images: {
 main: "/CS3PreviewDesktop.png",
 empathyMap: "/EmpathyMapPrizmpix.jpg",
 journeyMap: "/CustomerJourneyMap.jpg",
-loFi: "/PrizmpixLofiWireframe.jpg",
+loFi: "/PrizmpixLofiWireframe.jpeg",
 midFi: "/PrizmpixMidWireframe.jpg",
 hiFi1: "/PrizmPixWebsite1.jpg",
 hiFi2: "/PrizmPixWebsite3.jpg",
