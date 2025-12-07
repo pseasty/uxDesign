@@ -158,16 +158,18 @@ const ProjectModal = ({ id, onClose }) => {
 
 
           <div className="mt-20 space-y-10">
-            {/* Main splash image */}
-            {project.images?.main && (
-              <div className="rounded-card overflow-hidden">
-                <img
-                  src={project.images.main}
-                  alt={`${project.title} main visual`}
-                  className="w-full h-auto block"
-                />
-              </div>
-            )}
+            {/* Main splash image – skip CS2 so we can place it lower in the flow */}
+              {project.images?.main && project.id !== "cs2" && (
+                <div className="rounded-card overflow-hidden">
+                  <img
+                    src={project.images.main}
+                    alt={`${project.title} main visual`}
+                    className="w-full h-auto block"
+                  />
+                </div>
+              )}
+
+
 
             {/* ============================================================
                 CS1 – Portfolio / UX Website
@@ -321,78 +323,105 @@ const ProjectModal = ({ id, onClose }) => {
             )}
 
             {/* ============================================================
-                CS2 – regsitration software design and brand standards
-               ============================================================ */}
-            {project.id === "cs2" && (
-              <>
-                {/* Two-column layout with alternating image/text */}
-                <RowReveal>
-                  <div className="grid grid-cols-2 gap-16 items-start max-lg:grid-cols-1 max-lg:gap-10">
-                    {/* LEFT COLUMN */}
-                    <div className="space-y-10">
-                      {/* Before – legacy screen image */}
-                      {project.images?.before && (
-                        <div className="bg-white rounded-card p-4 border border-gray-200">
-                          <img
-                            src={project.images.before}
-                            alt={`${project.title} – legacy confirmation and enrollment screen`}
-                            className="w-full h-auto block rounded-md"
-                          />
-                        </div>
-                      )}
+                CS2 – registration software design and brand standards
+              ============================================================ */}
+              {project.id === "cs2" && (
+                <>
+                  {/* Cluster 1: Before / After columns, then desktop view */}
+                  <RowReveal>
+                    <div className="space-y-10 lg:space-y-12">
+                      {/* TWO-COLUMN LAYOUT: Each column has image + text stacked */}
+                      <div className="grid gap-8 lg:grid-cols-2 items-center">
+                        {/* LEFT COLUMN: BEFORE */}
+                        <div className="space-y-6">
+                          {/* BEFORE image */}
+                          {project.images?.before && (
+                            <div className="bg-white rounded-card p-4 border border-gray-200">
+                              <img
+                                src={project.images.before}
+                                alt={`${project.title} – legacy confirmation and enrollment screen`}
+                                className="w-full h-auto block rounded-md"
+                              />
+                            </div>
+                          )}
 
-                      {/* Before – text */}
-                      <div className="bg-med-background p-8 rounded-card text-text-dark">
-                        <h3 className="text-h3 font-heading font-bold text-text-dark">
-                          Before
-                        </h3>
-                        <p className="text-xl text-text-secondary mt-4">
-                          The legacy confirmation and enrollment screen was dense and hard to
-                          scan. Primary tasks were buried among secondary controls, the visual
-                          hierarchy didn&apos;t match real user goals, and there was little
-                          guidance around what would happen next. People had to slow down,
-                          reread, and double-check details just to feel confident that their
-                          enrollment was correct.
-                        </p>
+                          {/* BEFORE text card */}
+                          <div className="bg-med-background p-7 rounded-card text-text-dark">
+                            <h3 className="text-h3 font-heading font-bold text-text-dark">
+                              Before – cognitive load &amp; drop-offs
+                            </h3>
+                            <p className="text-xl text-text-secondary mt-3">
+                              The legacy confirmation and enrollment screen tried to show
+                              everything at once: academic details, session options, payment
+                              expectations, and fine print. Parents had to slow down, reread,
+                              and double-check details just to feel confident their enrollment
+                              was correct. Multi-student enrollments amplified the problem and
+                              increased the chance of errors and cancellations.
+                            </p>
+                          </div>
+                        </div>
+
+                        {/* RIGHT COLUMN: AFTER */}
+                        <div className="space-y-6">
+                          {/* AFTER image */}
+                          {project.images?.after && (
+                            <div className="bg-white rounded-card p-4 border border-gray-200">
+                              <img
+                                src={project.images.after}
+                                alt={`${project.title} – redesigned multi-enrollment flow (mobile)`}
+                                className="w-full h-auto block rounded-md"
+                              />
+                            </div>
+                          )}
+
+                          {/* AFTER text card */}
+                          <div className="bg-med-background p-7 rounded-card text-text-dark">
+                            <h3 className="text-h3 font-heading font-bold text-text-dark">
+                              After – guided, mobile-first progression
+                            </h3>
+                            <p className="text-xl text-text-secondary mt-3">
+                              I reframed the flow around the parent's mental model: one clear
+                              task at a time, predictable progression, and obvious next steps.
+                              Actions are grouped by intent, copy is more direct, and
+                              multi-enrollment is supported through repeatable patterns instead
+                              of more clutter. The mobile-first layout became the foundation
+                              for tablet and desktop.
+                            </p>
+                          </div>
+                        </div>
                       </div>
-                    </div>
 
-                    {/* RIGHT COLUMN */}
-                    <div className="space-y-10">
-                      {/* After – redesigned 320px screen image */}
-                      {project.images?.after && (
-                        <div className="bg-white rounded-card p-4 border border-gray-200">
-                          <img
-                            src={project.images.after}
-                            alt={`${project.title} – redesigned multi-enrollment flow (mobile)`}
-                            className="w-full h-auto block rounded-md"
-                          />
-                        </div>
-                      )}
+                      {/* DESKTOP HERO + CAPTION CARD (full width) */}
+                      {project.images?.main && (
+                        <div className="space-y-6">
+                          <div className="rounded-3xl overflow-hidden border border-gray-200 bg-white shadow-sm">
+                            <img
+                              src={project.images.main}
+                              alt="Desktop layout of the redesigned registration confirmation and enrollment flow"
+                              className="w-full h-auto object-cover"
+                            />
+                          </div>
 
-                      {/* After – text */}
-                      {project.images?.after && (
-                        <div className="bg-med-background p-8 rounded-card text-text-dark">
-                          <h3 className="text-h3 font-heading font-bold text-text-dark">
-                            After (Mobile & Desktop)
-                          </h3>
-                          <p className="text-xl text-text-secondary mt-4">
-                            The redesigned flow surfaces the primary task first—confirming or
-                            updating enrollment—then supports secondary actions like cancellations
-                            or adjustments. Clear sectioning, consistent labels, and obvious
-                            affordances reduce cognitive load, while the mobile and desktop
-                            layouts share the same underlying structure so users don&apos;t have
-                            to relearn the experience across devices.
-                          </p>
+                          <div className="bg-med-background p-8 rounded-card text-text-dark">
+                            <h3 className="text-h3 font-heading font-bold text-text-dark">
+                              Desktop view for wider breakpoints
+                            </h3>
+                            <p className="text-xl text-text-secondary mt-3">
+                              The experience was designed mobile-first, then scaled up for
+                              wider breakpoints using the same component structure, spacing
+                              system, and visual hierarchy. On desktop, the grid opens up, but
+                              the core behaviors and states stay consistent so parents
+                              don&apos;t have to relearn the flow when they switch devices.
+                            </p>
+                          </div>
                         </div>
                       )}
                     </div>
-                  </div>
-                </RowReveal>
+                  </RowReveal>
 
                 {/* Design standards & Working within design system */}
                 <RowReveal delay={0.1}>
-                  <div className="grid grid-cols-2 gap-16 items-start max-lg:grid-cols-1 max-lg:gap-10">
+                  <div className="grid grid-cols-2 gap-16 items-center max-lg:grid-cols-1 max-lg:gap-10">
                     {/* LEFT COLUMN */}
                     <div className="space-y-10">
                       {/* Design standards PDF – image */}
@@ -413,18 +442,18 @@ const ProjectModal = ({ id, onClose }) => {
                         </h3>
                         <p className="text-xl text-text-secondary mt-4">
                           The organization already had a mature visual identity and
-                          non-negotiable guidelines. My role was to translate that system into a
-                          complex registration flow without introducing one-off patterns. I
-                          mapped existing typography, colour, and component conventions to the
-                          new screens so the experience felt native to the broader ecosystem
-                          instead of like an exception.
+                          non-negotiable guidelines. My role was to translate that system
+                          into a complex registration flow without introducing one-off
+                          patterns. I mapped existing typography, colour, and component
+                          conventions to the new screens so the experience felt native to
+                          the broader ecosystem instead of like an exception.
                         </p>
                         <p className="text-xl text-text-secondary mt-4">
                           In focused working sessions with the design standards team and
-                          DevOps, I walked through key decisions—why components were grouped,
-                          which states we needed to support, and how success and error states
-                          should behave—so everyone understood the rationale behind the final
-                          UI.
+                          DevOps, I walked through key decisions—why components were
+                          grouped, which states we needed to support, and how success and
+                          error states should behave—so everyone understood the rationale
+                          behind the final UI.
                         </p>
                       </div>
                     </div>
@@ -454,14 +483,14 @@ const ProjectModal = ({ id, onClose }) => {
                       {/* Granularity paragraph about hand-off */}
                       <div className="bg-med-background p-8 rounded-card text-text-dark">
                         <h3 className="text-h3 font-heading font-bold text-text-dark">
-                           Detailed Specs for Confident Handoff
+                          Detailed Specs for Confident Handoff
                         </h3>
                         <p className="text-xl text-text-secondary mt-4">
                           I delivered a set of annotated screens with grid overlays, spacing
                           rules, and component usage notes, along with examples of different
                           states (empty, partial, full, error). This gave the DevOps team a
-                          clear reference for implementation and reduced back-and-forth around
-                          layout, responsiveness, and edge cases as the flow evolved.
+                          clear reference for implementation and reduced back-and-forth
+                          around layout, responsiveness, and edge cases as the flow evolved.
                         </p>
                       </div>
                     </div>
@@ -496,16 +525,17 @@ const ProjectModal = ({ id, onClose }) => {
                           Fast, Cross-functional Delivery
                         </h3>
                         <p className="text-xl text-text-secondary mt-4">
-                          I partnered closely with the registration DevOps lead to keep design
-                          and implementation aligned. We reviewed builds against the Figma
-                          specs in short working sessions, resolving questions on the spot and
-                          updating designs when constraints surfaced. This pairing reduced
-                          rework and helped us move from concept to usable experience quickly.
+                          I partnered closely with the registration DevOps lead to keep
+                          design and implementation aligned. We reviewed builds against the
+                          Figma specs in short working sessions, resolving questions on the
+                          spot and updating designs when constraints surfaced. This pairing
+                          reduced rework and helped us move from concept to usable
+                          experience quickly.
                         </p>
                         <p className="text-xl text-text-secondary mt-4">
-                          These conversations weren&apos;t just about pixels—they ensured that
-                          the UI reflected real operational constraints while still honoring
-                          the design system and improving the user journey.
+                          These conversations weren&apos;t just about pixels—they ensured
+                          that the UI reflected real operational constraints while still
+                          honoring the design system and improving the user journey.
                         </p>
                       </div>
                     </div>
@@ -521,10 +551,10 @@ const ProjectModal = ({ id, onClose }) => {
                       </h3>
                       <p className="text-xl text-text-secondary mt-4">
                         I used an interactive Figma prototype to walk stakeholders through
-                        realistic scenarios—confirming multiple enrollments, updating details,
-                        and cancelling participation. This made it easier to gather feedback
-                        on task flows and copy, not just static screens, and gave the DevOps
-                        team a concrete reference for expected behavior.
+                        realistic scenarios—confirming multiple enrollments, updating
+                        details, and cancelling participation. This made it easier to gather
+                        feedback on task flows and copy, not just static screens, and gave
+                        the DevOps team a concrete reference for expected behavior.
                       </p>
 
                       <div className="w-full mt-4">
@@ -571,6 +601,7 @@ const ProjectModal = ({ id, onClose }) => {
                 </RowReveal>
               </>
             )}
+
 
             {/* ============================================================
                 CS3 – PrizmPix client web app
