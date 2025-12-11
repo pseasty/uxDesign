@@ -601,18 +601,19 @@ const WorkSection = ({
   // - DEFINE (index 0): move DOWN to meet the others
   // - DESIGN (index 1): stay roughly in place (this is our anchor point)
   // - DELIVER (index 2): move UP to meet the others
-  const overshootOffsets = [50, 0, -50]; // Positive = down, Negative = up
+  const overshootOffsets = [-150, -125, -100]; // Positive = down, Negative = up
+  const startOffsets = [200, 200, 200];  
 
   const headingVariants = {
     start: (i) => ({
       opacity: 0,
-      scale: 0.45,
-      y: overshootOffsets[i],
+      scale: 0.25,
+      y: startOffsets[i],
       color: "#FFFFFF",
     }),
     overshoot: (i) => ({
       opacity: 1,
-      scale: 1.4,
+      scale: 2,
       y: overshootOffsets[i],
       color: "#FFFFFF",
     }),
@@ -793,7 +794,7 @@ const ProjectCard = ({ project, onSelect, revealType, introReady }) => {
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 0 }}
-            transition={{ delay: 0.9 }}
+            transition={{ delay: 0.4 }}
             onAnimationComplete={() => setHasRevealed(true)}
             style={{ position: 'absolute', pointerEvents: 'none' }}
           />

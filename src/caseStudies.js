@@ -39,16 +39,18 @@ export const CASE_STUDIES = [
     websiteLink: "#",
     thumbnail: "/CS2Preview.png",             // desktop card image
     mobileThumbnail: "/CS2PreviewMobile.png", // mobile card image
-    images: {
-      main: "/Desktop.jpg",
-      before: "/BeforeDR.jpg",
-      after: "/320px Multi-Enroll. Expanded.jpg",
-      orgStandards: "/Dhammaorg Design Standards.jpg",
-      guides: "/DRConfirmComponentGuide.png",
-      grid: "/GridGuide.png",
-      dev1: "/Working w Jeremy 1.png",
-      dev2: "/Working w Jeremy 2.png",
-    },
+      images: {
+        main: "/Desktop.jpg",
+        before: "/BeforeDR.jpg",
+        after: "/MultiEnrollExpanded.jpg",
+        orgStandards: "/Dhammaorg Design Standards.jpg",
+        guides: "/DRConfirmComponentGuide.png",
+        grid: "/GridGuide.png",
+        dev1: "/Working w Jeremy 1.png",
+        dev2: "/Working w Jeremy 2.png",
+        affinityBoard: "/DR Confirm Affinity Board.jpg",
+        complexFlow: "/ComplexFunctionality.png",
+      },
     prototypeUrl:
       "https://embed.figma.com/proto/NYZ9iuCMQWSwygezbhkX9W/Flow-for-Portfolio?page-id=0%3A1&node-id=1-190&p=f&viewport=40%2C218%2C0.13&scaling=scale-down&content-scaling=fixed&embed-host=share",
   },
